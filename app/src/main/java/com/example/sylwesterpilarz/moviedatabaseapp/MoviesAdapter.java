@@ -11,30 +11,26 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MoviesAdapter extends RecyclerView.Adapter<MovieViewHolder>
-{
+public class MoviesAdapter extends RecyclerView.Adapter<MovieViewHolder> {
     private List<Movie> mMovieList;
     private LayoutInflater mInflater;
     private Context mContext;
 
-    public MoviesAdapter(Context context)
-    {
+    public MoviesAdapter(Context context) {
         this.mContext = context;
         this.mInflater = LayoutInflater.from(context);
         this.mMovieList = new ArrayList<>();
     }
 
     @Override
-    public MovieViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
-    {
+    public MovieViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.row_movie, parent, false);
         MovieViewHolder viewHolder = new MovieViewHolder(view);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(MovieViewHolder holder, int position)
-    {
+    public void onBindViewHolder(MovieViewHolder holder, int position) {
         Movie movie = mMovieList.get(position);
 
         Picasso.with(mContext)
@@ -44,13 +40,11 @@ public class MoviesAdapter extends RecyclerView.Adapter<MovieViewHolder>
     }
 
     @Override
-    public int getItemCount()
-    {
+    public int getItemCount() {
         return (mMovieList == null) ? 0 : mMovieList.size();
     }
 
-    public void setMovieList(List<Movie> movieList)
-    {
+    public void setMovieList(List<Movie> movieList) {
         this.mMovieList.clear();
         this.mMovieList.addAll(movieList);
         notifyDataSetChanged();
